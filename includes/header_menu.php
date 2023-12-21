@@ -21,11 +21,12 @@
                                </div>
                            
                        </li>
-                       <li class="nav-item"><a href="index.php" class="nav-link">Orders</a></li>
                        <?php
                        if (isset($_SESSION['email'])) {
                         ?>
                        <li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
+                       <li class="nav-item"><a href="orders.php" class="nav-link">Orders</a></li>
+
                        <?php
                           } 
                     ?>
