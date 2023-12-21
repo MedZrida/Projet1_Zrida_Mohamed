@@ -38,6 +38,8 @@ if (mysqli_num_rows($result) >= 1) {
                                 <th>Item Name</th>
                                 <th>Price</th>
                                 <th></th>
+                                <th></th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -46,10 +48,17 @@ if (mysqli_num_rows($result) >= 1) {
 while ($row = mysqli_fetch_array($result)) {
         $sum += $row["Price"];
         $id = $row["id"] . ", ";
-        echo "<tr><td>" . "#" . $row["id"] . "</td><td>" . $row["Name"] . "</td><td>Rs " . $row["Price"] . "</td><td><a href='cart-remove.php?id={$row['id']}' class='remove_item_link'> Remove</a></td></tr>";
+        echo "<tr><td>" . "#" 
+        . $row["id"] 
+        . "</td><td>" 
+        . $row["Name"] 
+        . "</td><td> " 
+        . $row["Price"] 
+        . "</td><td><a href='cart-remove.php?id={$row['id']}' class='remove_item_link'> Remove</a></td>"
+        . "</td><td><a href='order-add.php?id={$row['id']}' class='remove_item_link'> Buy</a></td></tr>";
     }
     $id = rtrim($id, ", ");
-    echo "<tr><td></td><td>Total</td><td>Rs " . $sum . "</td><td><a href='orders.php' class='btn btn-primary'>Confirm Order</a></td></tr>";
+    //echo "<tr><td></td><td>Total</td><td> " . $sum . "</td><td><a href='orders.php' class='btn btn-primary'>Confirm Order</a></td></tr>";
     ?>
                             </tbody>
                             <?php

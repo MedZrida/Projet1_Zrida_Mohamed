@@ -116,6 +116,12 @@ $('#login').modal('show');
     echo "<script type='text/javascript'>alert('" . $z . "')</script>";}?>
 
 
-
+<?php if (isset($_GET['error2'])) {$z = $_GET['error2'];
+    echo "<script type='text/javascript'>
+$(document).ready(function(){
+$('#profile').modal('show');
+});
+</script>";
+    echo "<script type='text/javascript'>alert('" . $z . "')</script>";}?>
 
 </html>

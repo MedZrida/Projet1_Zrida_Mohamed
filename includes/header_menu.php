@@ -3,7 +3,7 @@
 <!--Navigation bar start-->
 <nav class="navbar fixed-top navbar-expand-sm navbar-dark" style="background-color:rgba(0,0,0,0.5)">
             <div class="container">
-                    <a href="index.php" class="navbar-brand" style="font-family: 'Delius Swash Caps'">Planet Shopify</a>
+                    <a href="index.php" class="navbar-brand" style="font-family: 'Delius Swash Caps'">ZRIDA CONCEPT</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -39,13 +39,15 @@
                     ?>
                     <ul class="nav navbar-nav ml-auto">
                        <li class="nav-item"><a href="logout_script.php" class="nav-link"><i class="fa fa-sign-out"></i>Logout</a></li>
-                       <li class="nav-item"><a  class="nav-link " data-placement="bottom" data-toggle="popover" data-trigger="hover" data-content="<?php echo $_SESSION['email'] ?>"><i class="fa fa-user-circle "></i></a></li>
+                       <li class="nav-item"><a class="nav-link " data-placement="bottom" data-toggle="popover" data-trigger="hover" data-content="<?php echo $_SESSION['email'] ?>"><i class="fa fa-user-circle "></i></a></li>
+                       <li class="nav-item "><a href="#profile" class="nav-link"data-toggle="modal" ><i class="fa fa-user"></i> Profile</a></li>
+
                     </ul>
                     <?php
                 } else {
                     ?>
                     <ul class="nav navbar-nav ml-auto">
-                       <li class="nav-item "><a href="#signup" class="nav-link"data-toggle="modal" ><i class="fa fa-user"></i> sign In</a></li>
+                       <li class="nav-item "><a href="#signup" class="nav-link"data-toggle="modal" ><i class="fa fa-user"></i> Sign In</a></li>
                        <li class="nav-item "><a href="#login" class="nav-link" data-toggle="modal"><i class="fa fa-sign-in"></i> Login</a></li>
                     </ul>
                     <?php 
@@ -138,6 +140,55 @@
             </div>
             <div class="modal-footer">
               <p class="mr-auto">Already Registered?<a href="#login"  data-toggle="modal" data-dismiss="modal">Login</a></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Signup trigger model ends-->
+
+
+       <!--Signup model start-->
+    <div class="modal fade" id="profile">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" style="background-color:rgba(255,255,255,0.95)">
+
+            <div class="modal-header">
+              <h5 class="modal-title">My Profile</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <form action="profile_script.php" method="post">
+                <div class="form-group">
+                     <label for="email">Email address:</label>
+                     <input type="email" class="form-control"  name="eMail" placeholder="Enter email" required>
+                     <?php if(isset($_GET['error2'])){ echo "<span class='text-danger'>".$_GET['error2']."</span>" ;}  ?>
+                </div>
+              
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="validation1">First Name</label>
+                        <input type="text" class="form-control" id="validation1" name="firstName" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group col-md -6">
+                        <label for="validation2">Last Name</label>
+                        <input type="text" class="form-control" id="validation2" name="lastName" placeholder="Last Name">
+                    </div>
+                </div>
+                
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" required>
+                    <label for="checkbox" class="form-check-label">Agree terms and Condition</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" name="Submit">Update</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <p class="mr-auto">Delete Account?<a href="#deleteaccount"  data-toggle="modal" data-dismiss="modal">Remove</a></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
             </div>
           </div>

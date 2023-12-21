@@ -2,9 +2,6 @@
 require "includes/common.php";
 session_start();
 
-$user_id = $_SESSION['user_id'];
-$query = "UPDATE users_products SET status='Ordered' WHERE user_id='$user_id' AND status='Added to cart'";
-mysqli_query($con, $query);
 if (!isset($_SESSION['email'])) {
     header('location: index.php');
 }
@@ -50,10 +47,10 @@ if (mysqli_num_rows($result) >= 1) {
 while ($row = mysqli_fetch_array($result)) {
         $sum += $row["Price"];
         $id = $row["id"] . ", ";
-        echo "<tr><td>" . "#" . $row["id"] . "</td><td>" . $row["Name"] . "</td><td>Rs " . $row["Price"] . "</td><td><a href='cart-update.php?id={$row['id']}' class='remove_item_link'> Return your product</a></td></tr>";
+        echo "<tr><td>" . "#" . $row["id"] . "</td><td>" . $row["Name"] . "</td><td>Rs " . $row["Price"] . "</td><td><a href='order-remove.php?id={$row['id']}' class='remove_item_link'> Return your product</a></td></tr>";
     }
     $id = rtrim($id, ", ");
-    echo "<tr><td></td><td>Total</td><td>Rs " . $sum . "</td><td><a href='' class='btn btn-primary'>Track your order</a></td></tr>";
+   // echo "<tr><td></td><td>Total</td><td>Rs " . $sum . "</td><td><a href='' class='btn btn-primary'>Track your orders</a></td></tr>";
     ?>
                             </tbody>
                             <?php
